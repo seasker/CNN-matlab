@@ -1,0 +1,114 @@
+clear all;close all;clc;
+addpath('../../dataset/Traffic-data-mat');
+addpath('../../util');
+addpath('../../CNN');
+
+%% set global parameter [needed]
+
+global usePreTrainModel;
+global useDisplayModel;
+global useDataTransform;
+global useBatchShuffle;
+global useSnapshot;
+global useFileLog;
+
+usePreTrainModel = false;
+useDisplayModel = true;
+useDataTransform = true;
+useBatchShuffle = false;
+useSnapshot= false;
+useFileLog = false;
+
+%%  optimization parameters
+opts.alpha = 0.005;
+opts.batchsize = 100;
+opts.moment = 0.9;
+opts.decay=0.001;
+opts.numepochs = 40;
+opts.paramfiller = 'xavier';
+opts.droprate = 0.0;
+opts.testinterval = 10;
+opts.snapshotinterval = 20;
+opts.lossfunc = @msefunc;
+
+%% load dataset and process it  (datameta to h*w*n*c, labelmeta to c*n)
+load trafficcontinuousFSOdata
+trainnum = 93926;
+transmeta.maxval = 1;
+transmeta.minval = 0;
+[train_data_x, train_data_y, test_data_x, test_data_y, datameta] = datapreprocess(trafficcontinuousFSOdata, trainnum);
+[train_x, train_y] = datatransform(train_data_x, train_data_y, datameta, transmeta);
+[test_x, test_y] = datatransform(test_data_x, test_data_y, datameta, transmeta);
+
+%% set cnn_traffic layers and parameters
+cnn_traffic.name = 'cnn_traffic35_35_8_net_6';
+if   usePreTrainModel
+    assert(logical(exist('cnn_traffic.mat','file')),'ERROR: not exist cnn model');
+    load(cnn_traffic.name);
+    cnn_traffic.stage = cnn_traffic.stage + 1;
+else
+    cnn_traffic.type = 'R';
+    cnn_traffic.stage = 1;
+    cnn_traffic.layers = {
+        struct('type', 'i') %input layer
+        struct('type', 'c', 'outputchannels', 8, 'kernelsize', 5 ,'stride', 1, 'activefunc', @relu) %convolution layer
+        struct('type', 's', 'poolsize', 2, 'stride', 2, 'poolmethod', 'm') %sub sampling layer
+        struct('type', 'c', 'outputchannels', 16, 'kernelsize',3, 'stride', 1, 'activefunc', @relu) %convolution layer
+        struct('type', 's', 'poolsize', 2, 'stride', 2, 'poolmethod', 'm') %sub sampling layer
+        struct('type', 'c', 'outputchannels', 32, 'kernelsize',3, 'stride', 1, 'activefunc', @relu) %convolution layer
+        struct('type', 's', 'poolsize', 2, 'stride', 2, 'poolmethod', 'm') %sub sampling layer
+        %struct('type', 'fc','outputchannels', 512)
+        struct('type', 'fc', 'activefunc', @sigm)
+        };
+    cnn_traffic = cnnsetup(cnn_traffic, opts, train_x, train_y );
+    %cnnshowmodel(cnn_traffic, opts);
+end
+
+% if exits(MaxPooling.cpp) && ~exits(MaxPooling.mexa64)
+%     mex MaxPooling.cpp;
+% end
+% if exits(StachasticPooling.cpp) && ~exits(StachasticPooling.mexa64)
+%     mex StachasticPooling.cpp;
+% end
+
+%% train and test model
+cnnshowoptparam(opts);
+cnnshowmodel(cnn_traffic,opts);
+cnn_traffic = cnntrain(cnn_traffic, opts, train_x, train_y, test_x, test_y);
+trainrslt = cnntest(cnn_traffic,opts, train_x, train_y);
+testrslt = cnntest(cnn_traffic, opts,test_x, test_y);
+cnnshowoptparam(opts);
+cnnshowmodel(cnn_traffic, opts);
+trainrslt = cnnshowresult(trainrslt, opts, train_x, train_y, datameta, transmeta);
+testrslt = cnnshowresult(testrslt, opts, test_x, test_y,  datameta, transmeta);
+
+useFileLog = true;
+if isfield(opts,'logfilename')
+    fid = fopen(opts.logfilename,'a+');
+else
+    fid = fopen('result.txt', 'a+');
+end
+if cnn_traffic.stage == 1
+    fprintf(fid, '<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\n');
+    fprintf(fid, '%s\n',date);
+    fclose(fid);
+    cnnshowmodel(cnn_traffic, opts);
+else
+    fprintf(fid, '%s\n',date);
+    fprintf(fid,'Net-Stage-%d\n', cnn_traffic.stage);
+    fclose(fid);
+end
+cnnshowoptparam(opts);
+cnnshowresult(trainrslt, opts, train_x, train_y, datameta, transmeta);
+cnnshowresult(testrslt, opts, test_x, test_y,  datameta, transmeta);
+
+%% save model and display
+save (cnn_traffic.name,'cnn_traffic','-v7.3');
+plot(cnn_traffic.rl);
+title('traffic');
+legend('last batch optimized loss','smooth batch optimized loss','last batch loss','smooth batch loss');
+saveas(gcf,'rl.png');
+%close all;
+
+
+

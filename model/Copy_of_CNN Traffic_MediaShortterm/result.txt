@@ -1,0 +1,205 @@
+09-May-2017
+alpha=0.1000  batchsize=100  moment=0.0000  decay=0.0010  numepochs=100.0000  droprate=0.0000  testinterval=20.0000  snapshotinterval=20.0000  lossfunc=msefunc
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+Input Layer: channels=3, mapsize=[35,35], rf=[1,1]
+Convolution Layer: channels=8, mapsize=[31,31], kernelsize=[5,5], stride=[1,1], rf=[5,5], numparam=608(numkernelparam:600 + numbiasparam:8)
+Pooling Layer: channels=8, mapsize=[14,14], kernelsize=[5,5], stride=[2,2] ,rf=[13,13]
+Convolution Layer: channels=16, mapsize=[12,12], kernelsize=[3,3], stride=[1,1], rf=[15,15], numparam=1168(numkernelparam:1152 + numbiasparam:16)
+Pooling Layer: channels=16, mapsize=[6,6], kernelsize=[2,2], stride=[2,2] ,rf=[30,30]
+Convolution Layer: channels=32, mapsize=[4,4], kernelsize=[3,3], stride=[1,1], rf=[32,32], numparam=4640(numkernelparam:4608 + numbiasparam:32)
+Pooling Layer: channels=32, mapsize=[2,2], kernelsize=[2,2], stride=[2,2] ,rf=[64,64]
+Probability Layer: classnum=840,mapsize=[1,1], rf=[64,64], numparam=108360(numweightparam:107520 + numbiasparam:840
+totalparam:11477
+---------------------------------------------------------------------------------------------------------------------------------------
+CHANNEL 1   loss:12.9362   mre:6.5959  
+CHANNEL 2   loss:3.0384   mre:0.4212  
+CHANNEL 3   loss:22.8315   mre:13.7349  
+loss:38.8061  mre:6.9207  
+CHANNEL 1   loss:12.4636   mre:6.8312  
+CHANNEL 2   loss:3.2225   mre:0.4423  
+CHANNEL 3   loss:22.7063   mre:14.6353  
+loss:38.3925  mre:7.3067  
+
+CHANNEL 1   loss:0.3089   mre:0.4165  
+CHANNEL 2   loss:0.6488   mre:0.1800  
+CHANNEL 3   loss:0.5890   mre:0.6104  
+loss:1.5467  mre:0.4025  
+CHANNEL 1   loss:0.3764   mre:0.4126  
+CHANNEL 2   loss:0.7014   mre:0.1885  
+CHANNEL 3   loss:0.5965   mre:0.6504  
+loss:1.6743  mre:0.4174  
+
+CHANNEL 1   loss:0.2893   mre:0.3745  
+CHANNEL 2   loss:0.5860   mre:0.1704  
+CHANNEL 3   loss:0.5402   mre:0.5457  
+loss:1.4155  mre:0.3637  
+CHANNEL 1   loss:0.3538   mre:0.3615  
+CHANNEL 2   loss:0.6332   mre:0.1788  
+CHANNEL 3   loss:0.5595   mre:0.5635  
+loss:1.5465  mre:0.3681  
+
+CHANNEL 1   loss:0.2664   mre:0.3744  
+CHANNEL 2   loss:0.5615   mre:0.1640  
+CHANNEL 3   loss:0.5045   mre:0.5424  
+loss:1.3323  mre:0.3605  
+CHANNEL 1   loss:0.3324   mre:0.3629  
+CHANNEL 2   loss:0.6114   mre:0.1729  
+CHANNEL 3   loss:0.5393   mre:0.5370  
+loss:1.4832  mre:0.3578  
+
+CHANNEL 1   loss:0.2552   mre:0.3447  
+CHANNEL 2   loss:0.5486   mre:0.1612  
+CHANNEL 3   loss:0.4861   mre:0.4974  
+loss:1.2899  mre:0.3346  
+CHANNEL 1   loss:0.3262   mre:0.3391  
+CHANNEL 2   loss:0.5979   mre:0.1708  
+CHANNEL 3   loss:0.5250   mre:0.4835  
+loss:1.4491  mre:0.3313  
+
+---------------------------------------------------------------------------
+CHANNEL 1   loss:0.2449   mre:0.3316  true loss:248353.9547  true mre:0.1995
+CHANNEL 2   loss:0.5411   mre:0.1599  true loss:12173.9770  true mre:0.1599
+CHANNEL 3   loss:0.4738   mre:0.4981  true loss:4519.2328  true mre:0.3164
+loss:1.2598  mre:0.3300  true loss:265047.1645  true mre:0.2253
+---------------------------------------------------------------------------
+CHANNEL 1   loss:0.3237   mre:0.3330  true loss:328253.8808  true mre:0.2004
+CHANNEL 2   loss:0.5949   mre:0.1703  true loss:13385.5493  true mre:0.1703
+CHANNEL 3   loss:0.5172   mre:0.4823  true loss:4932.7159  true mre:0.3170
+loss:1.4358  mre:0.3287  true loss:346572.1460  true mre:0.2293
+
+
+10-May-2017-net-stage-2
+<parameters>
+  alpha=0.1000  batchsize=100  moment=0.0000  decay=0.0010  numepochs=100.0000  droprate=0.0000  testinterval=20.0000  snapshotinterval=20.0000  lossfunc=msefunc
+---------------------------------------------------------------------------------------------------------------------------------------
+<result>
+CHANNEL 1   loss:0.2197   mre:0.3091  true loss:222760.3228  true mre:0.1858
+CHANNEL 2   loss:0.5152   mre:0.1566  true loss:11591.3291  true mre:0.1566
+CHANNEL 3   loss:0.4504   mre:0.4512  true loss:4296.1249  true mre:0.2872
+loss:1.1853  mre:0.3058  true loss:238647.7768  true mre:0.2099
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<result>
+CHANNEL 1   loss:0.3205   mre:0.3286  true loss:325019.8299  true mre:0.1975
+CHANNEL 2   loss:0.5787   mre:0.1693  true loss:13021.7305  true mre:0.1693
+CHANNEL 3   loss:0.5093   mre:0.4460  true loss:4857.1862  true mre:0.2925
+loss:1.4085  mre:0.3148  true loss:342898.7467  true mre:0.2198
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+11-May-2017-net-stage-3
+<parameters>
+  alpha=0.5000  batchsize=100  moment=0.0000  decay=0.0010  numepochs=100.0000  droprate=0.0000  testinterval=20.0000  snapshotinterval=20.0000  lossfunc=msefunc
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<result>
+CHANNEL 1   loss:0.2143   mre:0.2767  true loss:217284.9075  true mre:0.1722
+CHANNEL 2   loss:0.5074   mre:0.1500  true loss:11415.6630  true mre:0.1500
+CHANNEL 3   loss:0.4237   mre:0.4878  true loss:4041.3826  true mre:0.3057
+loss:1.1454  mre:0.3050  true loss:232741.9531  true mre:0.2093
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<result>
+CHANNEL 1   loss:0.3295   mre:0.3022  true loss:334092.5615  true mre:0.1877
+CHANNEL 2   loss:0.5718   mre:0.1626  true loss:12866.0936  true mre:0.1626
+CHANNEL 3   loss:0.4951   mre:0.4787  true loss:4722.1617  true mre:0.3117
+loss:1.3964  mre:0.3147  true loss:351680.8168  true mre:0.2207
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+
+
+
+11-May-2017-net-stage-1
+<parameters>
+  alpha=0.0500  batchsize=100.0000  moment=0.9000  decay=0.0050  numepochs=40.0000  droprate=0.0000  testinterval=10.0000  snapshotinterval=20.0000  lossfunc=msefunc
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<model>
+Input Layer: channels=3  mapsize=[35,35]  rf=[1,1]  
+Convolution Layer: channels=8  mapsize=[31,31]  kernelsize=[5,5]  stride=[1,1]  rf=[5,5]  numparam=608(600 + 8)  activefunc=sigm
+Pooling Layer: channels=8  mapsize=[16,16]  kernelsize=[2,2]  stride=[2,2]  rf=[10,10]  
+Convolution Layer: channels=16  mapsize=[14,14]  kernelsize=[3,3]  stride=[1,1]  rf=[12,12]  numparam=1168(1152 + 16)  activefunc=sigm
+Pooling Layer: channels=16  mapsize=[7,7]  kernelsize=[2,2]  stride=[2,2]  rf=[24,24]  
+Convolution Layer: channels=32  mapsize=[5,5]  kernelsize=[3,3]  stride=[1,1]  rf=[26,26]  numparam=4640(4608 + 32)  activefunc=sigm
+Pooling Layer: channels=32  mapsize=[3,3]  kernelsize=[2,2]  stride=[2,2]  rf=[52,52]  
+Probability Layer: classnum=840  mapsize=[1,1]  rf=[52,52]  numparam=242760(241920 + 840)  activefunc=sigm
+totalparam:249176
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<result>
+CHANNEL 1   loss:0.1753   mre:0.2698  true loss:177771.0162  true mre:0.1611
+CHANNEL 2   loss:0.4347   mre:0.1377  true loss:9781.3231  true mre:0.1377
+CHANNEL 3   loss:0.3641   mre:0.4118  true loss:3473.0852  true mre:0.2595
+loss:0.9742  mre:0.2733  true loss:191025.4245  true mre:0.1861
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<result>
+CHANNEL 1   loss:0.2612   mre:0.2990  true loss:264875.2013  true mre:0.1788
+CHANNEL 2   loss:0.4821   mre:0.1475  true loss:10847.1204  true mre:0.1475
+CHANNEL 3   loss:0.4086   mre:0.4185  true loss:3896.7566  true mre:0.2691
+loss:1.1519  mre:0.2885  true loss:279619.0783  true mre:0.1984
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+12-May-2017-net-stage-1
+<parameters>
+  alpha=0.3000  batchsize=100.0000  moment=0.9000  decay=0.0010  numepochs=40.0000  droprate=0.0000  testinterval=10.0000  snapshotinterval=20.0000  lossfunc=msefunc
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<model>
+Input Layer: channels=3  mapsize=[35,35]  rf=[1,1]  
+Convolution Layer: channels=8  mapsize=[31,31]  kernelsize=[5,5]  stride=[1,1]  rf=[5,5]  numparam=608(600 + 8)  activefunc=sigm
+Pooling Layer: channels=8  mapsize=[16,16]  kernelsize=[2,2]  stride=[2,2]  rf=[10,10]  
+Convolution Layer: channels=16  mapsize=[14,14]  kernelsize=[3,3]  stride=[1,1]  rf=[12,12]  numparam=1168(1152 + 16)  activefunc=sigm
+Pooling Layer: channels=16  mapsize=[7,7]  kernelsize=[2,2]  stride=[2,2]  rf=[24,24]  
+Convolution Layer: channels=32  mapsize=[5,5]  kernelsize=[3,3]  stride=[1,1]  rf=[26,26]  numparam=4640(4608 + 32)  activefunc=sigm
+Pooling Layer: channels=32  mapsize=[3,3]  kernelsize=[2,2]  stride=[2,2]  rf=[52,52]  
+Probability Layer: classnum=840  mapsize=[1,1]  rf=[52,52]  numparam=242760(241920 + 840)  activefunc=sigm
+totalparam:249176
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<result>
+CHANNEL 1   loss:0.2668   mre:0.3632  true loss:270499.0658  true mre:0.2152
+CHANNEL 2   loss:0.5384   mre:0.1570  true loss:12113.3407  true mre:0.1570
+CHANNEL 3   loss:0.4668   mre:0.5555  true loss:4452.3944  true mre:0.3409
+loss:1.2720  mre:0.3587  true loss:287064.8009  true mre:0.2377
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<result>
+CHANNEL 1   loss:0.3512   mre:0.3614  true loss:356168.9546  true mre:0.2128
+CHANNEL 2   loss:0.5733   mre:0.1655  true loss:12898.3653  true mre:0.1655
+CHANNEL 3   loss:0.4992   mre:0.5970  true loss:4760.9321  true mre:0.3636
+loss:1.4237  mre:0.3748  true loss:373828.2520  true mre:0.2473
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+net-stage-2
+<parameters>
+  alpha=0.0100  batchsize=100.0000  moment=0.9000  decay=0.0050  numepochs=40.0000  droprate=0.0000  testinterval=10.0000  snapshotinterval=20.0000  lossfunc=msefunc
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+<result>
+CHANNEL 1   loss:0.1701   mre:0.2628  true loss:172461.4909  true mre:0.1569
+CHANNEL 2   loss:0.4240   mre:0.1352  true loss:9541.1000  true mre:0.1352
+CHANNEL 3   loss:0.3582   mre:0.4067  true loss:3416.7529  true mre:0.2557
+loss:0.9524  mre:0.2684  true loss:185419.3438  true mre:0.1826
+---------------------------------------------------------------------------
+<result>
+CHANNEL 1   loss:0.2562   mre:0.2933  true loss:259796.8982  true mre:0.1751
+CHANNEL 2   loss:0.4682   mre:0.1443  true loss:10533.9019  true mre:0.1443
+CHANNEL 3   loss:0.3999   mre:0.4129  true loss:3814.4529  true mre:0.2643
+loss:1.1243  mre:0.2837  true loss:274145.2530  true mre:0.1946
+---------------------------------------------------------------------------
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+13-May-2017--cnn_traffic35_35_8_net_1
+<model>
+Input Layer: channels=3  mapsize=[35,35]  rf=[1,1]  
+Convolution Layer: channels=8  mapsize=[31,31]  kernelsize=[5,5]  stride=[1,1]  rf=[5,5]  numparam=608(600 + 8)  activefunc=relu
+Pooling Layer: channels=8  mapsize=[16,16]  kernelsize=[2,2]  stride=[2,2]  rf=[10,10]  
+Convolution Layer: channels=16  mapsize=[14,14]  kernelsize=[3,3]  stride=[1,1]  rf=[12,12]  numparam=1168(1152 + 16)  activefunc=relu
+Pooling Layer: channels=16  mapsize=[7,7]  kernelsize=[2,2]  stride=[2,2]  rf=[24,24]  
+Convolution Layer: channels=32  mapsize=[5,5]  kernelsize=[3,3]  stride=[1,1]  rf=[26,26]  numparam=4640(4608 + 32)  activefunc=relu
+Pooling Layer: channels=32  mapsize=[3,3]  kernelsize=[2,2]  stride=[2,2]  rf=[52,52]  
+Probability Layer: classnum=840  mapsize=[1,1]  rf=[52,52]  numparam=242760(241920 + 840)  activefunc=sigm
+totalparam:249176
+net-stage-1
+-------------------------------------------------------------------------------------------------------------------------------------------
+<parameters>
+  alpha=0.0100  batchsize=100.0000  moment=0.9000  decay=0.0010  numepochs=40.0000  droprate=0.0000  testinterval=10.0000  snapshotinterval=20.0000  lossfunc=msefunc
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+<result>
+CHANNEL 1   loss:0.1931   mre:0.2472  true loss:195815.6033  true mre:0.1564
+CHANNEL 2   loss:0.4474   mre:0.1377  true loss:10067.0481  true mre:0.1377
+CHANNEL 3   loss:0.3790   mre:0.3879  true loss:3614.9723  true mre:0.2517
+loss:1.0196  mre:0.2577  true loss:209497.6238  true mre:0.1819
+---------------------------------------------------------------------------
+<result>
+CHANNEL 1   loss:0.2784   mre:0.2823  true loss:282283.6282  true mre:0.1726
+CHANNEL 2   loss:0.4846   mre:0.1432  true loss:10903.2797  true mre:0.1432
+CHANNEL 3   loss:0.4227   mre:0.3830  true loss:4031.1165  true mre:0.2562
+loss:1.1856  mre:0.2696  true loss:297218.0244  true mre:0.1907
+---------------------------------------------------------------------------
