@@ -11,10 +11,10 @@ else
 end
 n = numel(net.layers);
 if isfield(net,'name')
-    fprintf('Net-Name-%s\n',net.name);
+    fprintf(fid,'Net-Name-%s\n',net.name);
 end
 if isfield(net,'stage')
-    fprintf('Net-Stage-%d\n',net.stage);
+    fprintf(fid,'Net-Stage-%d\n',net.stage);
 end
 fprintf(fid,'<model>\n');
 totalparam = 0;
@@ -78,7 +78,7 @@ for l = 1 : n  %  layer
         numparam = numweightparam + numbiasparam;
         totalparam = totalparam + numparam;
         if l == n
-            fprintf(fid,'Probability Layer: classnum=%d  mapsize=[%d,%d]  rf=[%d,%d]  numparam=%d(%d + %d  ',...
+            fprintf(fid,'Probability Layer: classnum=%d  mapsize=[%d,%d]  rf=[%d,%d]  numparam=%d(%d + %d)  ',...
                 net.layers{l}.outputchannels,net.layers{l}.mapsize(1), net.layers{l}.mapsize(2), rf(1),rf(2),numparam, numweightparam, numbiasparam);
         else
             fprintf(fid,'Full Connection Layer: channels=%d mapsize=[%d,%d], rf=[%d,%d]  numparam=%d(%d + %d)  ',...

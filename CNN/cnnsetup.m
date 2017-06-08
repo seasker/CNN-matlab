@@ -38,7 +38,7 @@ for l = 1 : n  %  layer
                 if strcmp(net.layers{l}.kernelfiller, 'xavier')
                     net.layers{l}.k{i}{j} = (rand(net.layers{l}.kernelsize) - 0.5) * 2 * sqrt(6 / (fan_in + fan_out));
                 elseif  strcmp(net.layers{l}.kernelfiller, 'gaussian')
-                    net.layers{l}.k{i}{j} = 0.1 * randn(net.layres{l}.kernelsize);
+                    net.layers{l}.k{i}{j} = 0.1 * randn(net.layers{l}.kernelsize);
                 end
                 net.layers{l}.ik{i}{j} = zeros(net.layers{l}.kernelsize);
                 net.regloss = net.regloss + 0.5 * net.layers{l}.decay * sum(net.layers{l}.k{i}{j}(:).^2);
@@ -99,8 +99,8 @@ for l = 1 : n  %  layer
             else
                 net.layers{l}.outputchannels = size(y, 1);    
             end
-              outputchannels = net.layers{l}.outputchannels;
         end
+         outputchannels = net.layers{l}.outputchannels;
         if strcmp(net.layers{l}.weightfiller, 'xavier')
             net.layers{l}.w = (rand(outputchannels, inputchannels) - 0.5) * 2 * sqrt(6 / (inputchannels + outputchannels));
         elseif strcmp(net.layers{l}.weightfiller, 'gaussian')
