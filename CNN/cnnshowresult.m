@@ -10,6 +10,9 @@ else
     fid = 1;
 end
 fprintf(fid,'<result>\n');
+if isfield(rslt,'epoch')
+    fprintf(fid,'Epoch:%d\n',rslt.epoch);
+end
 m = size(x, 3);
 if strcmp(rslt.type, 'C')
     cnum = size(y,1);

@@ -8,6 +8,9 @@ end
 m = size(x, 3); % m
 numbatches = double(floor(m / opts.batchsize));
 rslt.type = net.type;
+if isfield(net, 'epoch')
+    rslt.epoch = net.epoch;
+end
 rslt.fv =  [];
 rslt.pv =  [];
 rslt.sloss = 0;

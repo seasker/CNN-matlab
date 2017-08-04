@@ -2,6 +2,7 @@ function net = cnnsetup(net,opts, x, y)
 n = numel(net.layers);
 net.regloss = 0;
 net.epoch = 0;
+
 for l = 1 : n  %  layer
     if strcmp(net.layers{l}.type, 'i')
         net.layers{l}.mapsize = size(squeeze(x(:, :,1, 1)));

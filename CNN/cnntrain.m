@@ -1,6 +1,7 @@
 function net = cnntrain(net, opts, x, y, test_x , test_y)
 global useBatchShuffle;
 global useSnapshot;
+global useFileLog;
 if nargin > 4
     USETESTDATA = true;
 end
@@ -9,13 +10,21 @@ m = size(x, 3); % m
 numbatches = double(ceil(m / opts.batchsize));
 batchstartidx = 1;
 net.rl = [];
+opts.logfilename = [net.name,'_train_process.txt'];
 for epoch = 1 : opts.numepochs
     if rem(epoch, opts.testinterval)==1
+        
         trainrslt = cnntest(net, opts, x, y);
         cnnshowresult(trainrslt, opts, x, y);
+        useFileLog = true;
+        cnnshowresult_new(trainrslt, opts, x, y, opts.datameta, opts.transmeta);
+        useFileLog =false;
         if USETESTDATA
             testrslt = cnntest(net, opts, test_x, test_y);
             cnnshowresult(testrslt, opts, test_x, test_y);
+            useFileLog = true;
+            cnnshowresult_new(testrslt, opts, test_x, test_y,opts.datameta,opts.transmeta);
+            useFileLog = false;
         end
     end
     fprintf('epoch %d/%d  ', epoch, opts.numepochs);
