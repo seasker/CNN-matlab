@@ -2,6 +2,7 @@ function net = cnnsetup(net,opts, x, y)
 n = numel(net.layers);
 net.regloss = 0;
 net.epoch = 0;
+
 for l = 1 : n  %  layer
     if strcmp(net.layers{l}.type, 'i')
         net.layers{l}.mapsize = size(squeeze(x(:, :,1, 1)));
@@ -99,8 +100,9 @@ for l = 1 : n  %  layer
             else
                 net.layers{l}.outputchannels = size(y, 1);    
             end
-              outputchannels = net.layers{l}.outputchannels;
+           
         end
+           outputchannels = net.layers{l}.outputchannels;
         if strcmp(net.layers{l}.weightfiller, 'xavier')
             net.layers{l}.w = (rand(outputchannels, inputchannels) - 0.5) * 2 * sqrt(6 / (inputchannels + outputchannels));
         elseif strcmp(net.layers{l}.weightfiller, 'gaussian')

@@ -2,7 +2,7 @@ function cnnshowoptparam(opts)
 global useFileLog;
 if useFileLog
     if isfield(opts,'logfilename')
-        fid = fopen(opts.flname, 'a+');
+        fid = fopen(opts.logfilename, 'a+');
     else
         fid = fopen('result.txt', 'a+');
     end
